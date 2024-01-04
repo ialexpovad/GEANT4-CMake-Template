@@ -17,3 +17,12 @@ mkdir build && cd build
 cmake ..
 cmake --build .
 ```
+If you use VS Code in the file `.vscode/settings.json` to build
+```
+{
+    "cmake.configureSettings": {
+        "WITH_ROOT": "OFF",  // You can set it to "OFF" if you want to disable it
+        "ROOTSYS": "C:/ROOT"
+    }
+}  
+```
