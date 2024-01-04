@@ -33,9 +33,10 @@ else()
 endif()
 
 # Find ROOT package as needed
-option(WITH_ROOT "Enable ROOT." ON)
+option(WITH_ROOT "Enable ROOT." OFF)
 if(WITH_ROOT)
 	set(CMAKE_CXX_FLAGS "-DWITH_ROOT ${CMAKE_CXX_FLAGS}")
+  set(CMAKE_CXX_FLAGS "-DROOTSYS ${CMAKE_CXX_FLAGS}")
   find_package(ROOT REQUIRED)
   include_directories(${ROOT_INCLUDE_DIRS})
 	set(LIBS ${LIBS} ${ROOT_LIBRARIES})
@@ -43,7 +44,7 @@ endif()
 
 # Adds a library target called ${LIBRARY_TARGET_NAME} to be built from the
 # source and header files listed in the command invocation.
-add_library(${LIBRARY_TARGET_NAME} ${sources} ${headers})
+add_library(${LIBRARY_TARGET_NAME} ${LIBRARY_MODE} ${sources} ${headers})
 
 add_library(${PROJECT_NAME}::${LIBRARY_TARGET_NAME} ALIAS ${LIBRARY_TARGET_NAME})
 
