@@ -14,10 +14,22 @@ If your shell environment supports `mkdir`, you can just execute the following c
 git clone https://github.com/ialexpovod/GEANT4-CMake-Template.git [your_name_project]
 cd [your_name_project]
 mkdir build && cd build
-cmake ..
+cmake .. -DCMAKE_BUILD_TYPE=Release
 cmake --build .
 ```
-If you use VS Code in the file `.vscode/settings.json` to build
+Since GEANT4 can have only two types of configuration, you can specify either Release:
+```
+cmake ..-DCMAKE_BUILD_TYPE=Release /path/to/your/source 
+```
+or MinSizeRel:
+```
+cmake -DCMAKE_BUILD_TYPE=MinSizeRel /path/to/your/source
+```
+If you use the ROOT library in your project (Win32):
+```
+cmake .. -DWITH_ROOT=ON -DROOTSYS=C:/ROOT
+```
+If you use VS Code in the file `.vscode/settings.json` to build for example (Win32):
 ```
 {
     "cmake.configureSettings": {
